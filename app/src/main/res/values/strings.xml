@@ -1,0 +1,45 @@
+<resources>
+    <string name="button_login">Login</string>
+    <string name="email">Email</string>
+    <string name="hint_email">abc@example.com</string>
+    <string name="email_or_phone">Email Or Phone</string>
+    <string name="hint_email_or_phone">Enter Your Email Or Phone Number</string>
+    <string name="password">Password</string>
+    <string name="hint_password">Enter Your Password</string>
+    <string name="text_register">Don\'t have an Account?</string>
+    <string name="button_register">Register</string>
+    <string name="app_name">UserList Ankit</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="hint_confirm_password">Confirm Your Password</string>
+    <string name="name">Name</string>
+    <string name="hint_name">Enter Your Name</string>
+    <string name="phone">Mobile</string>
+    <string name="hint_phone">Enter Your Mobile Number</string>
+    <string name="text_login">Already have an account?</string>
+    <string name="country">Country</string>
+    <string name="text_country">Enter Your Country Name</string>
+    <string name="state">State</string>
+    <string name="text_state">Enter Your State Name</string>
+    <string name="gender">Gender</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="hobby">Hobby</string>
+    <string name="reading">Reading</string>
+    <string name="dancing">Dancing</string>
+    <string name="dob">Date Of Birth</string>
+    <string name="hint_dob">Enter Your Date Of Birth</string>
+    <string name="time">Time</string>
+    <string name="programming">Programming</string>
+    <string name="errorText">Please Select Your Gender</string>
+    <string name="user_list">User List</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="user_details">User Details</string>
+    <string name="add_user">Add User</string>
+    <string name="button_add_user">Add User</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="change_image">Change Image</string>
+    <string name="sort_by">Sort By</string>
+    <string name="sign_in_now">Sign In Now</string>
+    <string name="register_helper_text">In less than a minute</string>
+    <string name="select_all">Select All</string>
+</resources>
