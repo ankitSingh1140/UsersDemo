@@ -165,6 +165,41 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="48dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:paddingTop="@dimen/_8sdp"
+                android:text="@string/hobby"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <CheckBox
+                android:id="@+id/reading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/reading"
+                android:textColor="@color/black" />
+
+            <CheckBox
+                android:id="@+id/dancing"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/dancing"
+                android:textColor="@color/black" />
+
+            <CheckBox
+                android:id="@+id/programming"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/programming"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
             android:layout_marginTop="20dp"
             android:orientation="horizontal">
 
@@ -208,39 +243,6 @@
             android:layout_height="wrap_content"
             android:textColor="@color/red" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:paddingTop="@dimen/_8sdp"
-                android:text="@string/hobby"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <CheckBox
-                android:id="@+id/reading"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/reading"
-                android:textColor="@color/black" />
-
-            <CheckBox
-                android:id="@+id/dancing"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/dancing"
-                android:textColor="@color/black" />
-
-            <CheckBox
-                android:id="@+id/programming"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/programming"
-                android:textColor="@color/black" />
-        </LinearLayout>
     </androidx.appcompat.widget.LinearLayoutCompat>
 </androidx.constraintlayout.widget.ConstraintLayout>
