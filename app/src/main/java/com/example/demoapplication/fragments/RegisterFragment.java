@@ -25,6 +25,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.example.demoapplication.database.AppDatabase;
+import com.example.demoapplication.database.DBInstance;
 import com.example.demoapplication.database.User;
 import com.example.demoapplication.database.UserDao;
 import com.example.demoapplication.databinding.ActivityMainBinding;
@@ -71,7 +72,6 @@ public class RegisterFragment extends Fragment {
     FragmentRegisterBinding binding;
     ActivityMainBinding activityMainBinding;
     Activity a;
-    AppDatabase db;
     UserDao userDao;
     List<User> users;
     FragmentManager fragmentManager;
@@ -127,9 +127,7 @@ public class RegisterFragment extends Fragment {
         setValuesForState();
         setValuesForCountry();
         dobStyler();
-        db = Room.databaseBuilder(a.getApplicationContext(),
-                AppDatabase.class, "user").allowMainThreadQueries().fallbackToDestructiveMigration().build();
-        userDao = db.userDao();
+        userDao = DBInstance.getUserDao(a);
         users = userDao.getAll(sh.getUid());
         name.addTextChangedListener(new TextWatcher() {
             @Override

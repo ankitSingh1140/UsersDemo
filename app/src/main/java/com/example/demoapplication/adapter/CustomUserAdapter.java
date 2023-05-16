@@ -23,6 +23,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
 
 import com.example.demoapplication.database.AppDatabase;
+import com.example.demoapplication.database.DBInstance;
 import com.example.demoapplication.database.User;
 import com.example.demoapplication.database.UserDao;
 import com.example.demoapplication.databinding.ActivityMainBinding;
@@ -51,7 +52,6 @@ public class CustomUserAdapter  extends RecyclerView.Adapter<CustomUserAdapter.C
     CustomUserDataRowBinding binding;
     FragmentUserListBinding fragmentUserListBinding;
     SharedPreferencesOperations sh;
-    AppDatabase db;
     UserDao userDao;
     boolean setCheck;
     boolean delete;
@@ -149,9 +149,7 @@ public class CustomUserAdapter  extends RecyclerView.Adapter<CustomUserAdapter.C
 
     @Override
     public void onBindViewHolder(@NonNull CustomUserViewHolder holder, int position) {
-        db = Room.databaseBuilder(context,
-                AppDatabase.class, "user").allowMainThreadQueries().build();
-        userDao = db.userDao();
+        userDao = DBInstance.getUserDao(context);
 
         if (users.get(position).name != null){
             String name = users.get(holder.getAdapterPosition()).name;

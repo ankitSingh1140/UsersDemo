@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.demoapplication.database.AppDatabase;
+import com.example.demoapplication.database.DBInstance;
 import com.example.demoapplication.database.User;
 import com.example.demoapplication.database.UserDao;
 import com.example.demoapplication.databinding.ActivityMainBinding;
@@ -45,7 +46,6 @@ public class LoginFragment extends Fragment {
     ActivityMainBinding activityMainBinding;
 
     Activity a;
-    AppDatabase db;
     UserDao userDao;
     List<User> users;
     FragmentManager fragmentManager;
@@ -66,9 +66,7 @@ public class LoginFragment extends Fragment {
         a = getActivity();
         binding = FragmentLoginBinding.inflate(getLayoutInflater());
         activityMainBinding = ActivityMainBinding.inflate(getLayoutInflater());
-        db = Room.databaseBuilder(a.getApplicationContext(),
-                AppDatabase.class, "user").allowMainThreadQueries().fallbackToDestructiveMigration().build();
-        userDao = db.userDao();
+        userDao = DBInstance.getUserDao(a);
         users = userDao.getAll();
         try {
             sh = new SharedPreferencesOperations(a);

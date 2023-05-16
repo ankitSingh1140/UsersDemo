@@ -30,6 +30,7 @@ import android.widget.TextView;
 
 import com.example.demoapplication.R;
 import com.example.demoapplication.database.AppDatabase;
+import com.example.demoapplication.database.DBInstance;
 import com.example.demoapplication.database.User;
 import com.example.demoapplication.database.UserDao;
 import com.example.demoapplication.databinding.ActivityMainBinding;
@@ -69,7 +70,6 @@ public class UserDetailsFragment extends Fragment {
     Activity a;
     ActivityResultLauncher<PickVisualMediaRequest> pickMedia;
     String TAG;
-    AppDatabase db;
     UserDao userDao;
     User user;
     byte[] image = null;
@@ -102,9 +102,7 @@ public class UserDetailsFragment extends Fragment {
         } catch (GeneralSecurityException | IOException e) {
             throw new RuntimeException(e);
         }
-        db = Room.databaseBuilder(a.getApplicationContext(),
-                AppDatabase.class, "user").allowMainThreadQueries().fallbackToDestructiveMigration().build();
-        userDao = db.userDao();
+        userDao = DBInstance.getUserDao(a);
         user = userDao.findByUid(uid);
         name = binding.userDetailsView.etName;
         email = binding.userDetailsView.etEmail;

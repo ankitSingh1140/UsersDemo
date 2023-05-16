@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.example.demoapplication.database.AppDatabase;
+import com.example.demoapplication.database.DBInstance;
 import com.example.demoapplication.database.User;
 import com.example.demoapplication.database.UserDao;
 import com.example.demoapplication.databinding.ActivityMainBinding;
@@ -25,16 +26,13 @@ import java.security.GeneralSecurityException;
 public class MainActivity extends AppCompatActivity {
     public Context c;
     ActivityMainBinding binding;
-    AppDatabase db;
     UserDao userDao;
     User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        db = Room.databaseBuilder(this.getApplicationContext(),
-                AppDatabase.class, "user").allowMainThreadQueries().fallbackToDestructiveMigration().build();
-        userDao = db.userDao();
+        userDao = DBInstance.getUserDao(this);
         c = getApplicationContext();
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());

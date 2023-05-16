@@ -24,6 +24,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.example.demoapplication.database.AppDatabase;
+import com.example.demoapplication.database.DBInstance;
 import com.example.demoapplication.database.User;
 import com.example.demoapplication.database.UserDao;
 import com.example.demoapplication.databinding.ActivityMainBinding;
@@ -58,7 +59,6 @@ public class AddUserFragment extends Fragment {
     SharedPreferencesOperations sh = null;
     AuthServices auth = new AuthServices();
     Activity a;
-    AppDatabase db;
     UserDao userDao;
     List<User> users;
     byte[] image = null;
@@ -85,9 +85,7 @@ public class AddUserFragment extends Fragment {
         } catch (GeneralSecurityException | IOException e) {
             throw new RuntimeException(e);
         }
-        db = Room.databaseBuilder(a.getApplicationContext(),
-                AppDatabase.class, "user").allowMainThreadQueries().fallbackToDestructiveMigration().build();
-        userDao = db.userDao();
+        userDao = DBInstance.getUserDao(a);
         users = userDao.getAll(sh.getUid());
         name = binding.userDetailsView.etName;
         email = binding.userDetailsView.etEmail;

@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.room.Room;
 
 import com.example.demoapplication.database.AppDatabase;
+import com.example.demoapplication.database.DBInstance;
 import com.example.demoapplication.database.User;
 import com.example.demoapplication.database.UserDao;
 import com.example.demoapplication.model.AddUserModel;
@@ -26,16 +27,13 @@ import retrofit2.Response;
 
 public class ApiCalls {
     GetDataService service = RetrofitClientInstance.getRetrofitInstance().create(GetDataService.class);
-    AppDatabase db;
     UserDao userDao;
     Activity a;
     View v;
     public ApiCalls(Activity a, View v){
         this.a = a;
         this.v = v;
-        this.db = Room.databaseBuilder(a.getApplicationContext(),
-                AppDatabase.class, "user").allowMainThreadQueries().fallbackToDestructiveMigration().build();
-        this.userDao = db.userDao();
+        this.userDao = DBInstance.getUserDao(a);
     }
 
     // get all user from api

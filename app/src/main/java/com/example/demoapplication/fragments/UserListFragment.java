@@ -32,6 +32,7 @@ import android.widget.TextView;
 import com.airbnb.lottie.LottieAnimationView;
 import com.example.demoapplication.adapter.CustomUserAdapter;
 import com.example.demoapplication.database.AppDatabase;
+import com.example.demoapplication.database.DBInstance;
 import com.example.demoapplication.database.User;
 import com.example.demoapplication.database.UserDao;
 import com.example.demoapplication.databinding.ActivityMainBinding;
@@ -72,7 +73,6 @@ public class UserListFragment extends Fragment implements AdapterView.OnItemSele
     private static AppCompatCheckBox selectAll;
     private static AppCompatImageButton deleteAll;
     String[] items = new String[]{"A-Z", "Z-A", "Last Modified", "Last Created"};
-    AppDatabase db;
     static UserDao userDao;
     static List<User> users;
     static List<User> ids;
@@ -132,9 +132,7 @@ public class UserListFragment extends Fragment implements AdapterView.OnItemSele
         } catch (GeneralSecurityException | IOException e) {
             throw new RuntimeException(e);
         }
-        db = Room.databaseBuilder(a.getApplicationContext(),
-                AppDatabase.class, "user").allowMainThreadQueries().fallbackToDestructiveMigration().build();
-        userDao = db.userDao();
+        userDao = DBInstance.getUserDao(a);
         NetworkObserver.getConnect(a,new NetworkObserverCallback() {
             @Override
             public void onLost() {
